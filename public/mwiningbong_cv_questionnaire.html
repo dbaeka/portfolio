@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mwiningbong CV Information Form</title>
+<style>
+  :root{
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --text:#172033;
+    --muted:#667085;
+    --line:#e6e9ef;
+    --accent:#375dfb;
+    --accent-soft:#eef2ff;
+    --success:#16794b;
+    --danger:#b42318;
+    --radius:18px;
+    --shadow:0 12px 34px rgba(16,24,40,.08);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:linear-gradient(180deg,#f8faff 0%,var(--bg) 100%);
+    color:var(--text);
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:36px 18px 80px}
+  .hero,.section{
+    background:var(--card);
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+  }
+  .hero{border-radius:24px;padding:28px;margin-bottom:20px}
+  h1{font-size:clamp(28px,5vw,42px);line-height:1.05;margin:0 0 10px}
+  .hero p{margin:0;color:var(--muted);line-height:1.6;max-width:760px}
+  .save-note{
+    margin-top:14px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 11px;
+    border-radius:999px;
+    background:#edf8f2;
+    color:var(--success);
+    font-size:13px;
+    font-weight:700;
+  }
+  .progress-row{margin-top:20px;display:flex;gap:12px;align-items:center}
+  .progress-shell{height:10px;flex:1;background:#edf0f5;border-radius:99px;overflow:hidden}
+  .progress-bar{height:100%;width:0;background:var(--accent);transition:width .25s ease}
+  .progress-label{font-size:13px;color:var(--muted);min-width:88px;text-align:right}
+
+  .section{border-radius:var(--radius);margin:16px 0;overflow:hidden}
+  .section-toggle{
+    width:100%;
+    border:0;
+    background:#fff;
+    text-align:left;
+    padding:20px 22px;
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+    align-items:center;
+    cursor:pointer;
+    color:var(--text);
+  }
+  .section-title{font-size:18px;font-weight:760}
+  .section-sub{font-size:13px;color:var(--muted);margin-top:4px;font-weight:450}
+  .chev{font-size:20px;color:var(--muted);transition:transform .2s}
+  .section.open .chev{transform:rotate(180deg)}
+  .section-body{display:none;padding:0 22px 24px}
+  .section.open .section-body{display:block}
+
+  .q{padding:18px 0;border-top:1px solid var(--line)}
+  .q:first-child{border-top:0}
+  .q-title{font-weight:720;margin-bottom:5px}
+  .hint{font-size:13px;color:var(--muted);line-height:1.5;margin-bottom:10px}
+  .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+  label.option{
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:11px 12px;
+    display:flex;
+    gap:9px;
+    align-items:flex-start;
+    cursor:pointer;
+    background:#fff;
+  }
+  label.option:hover{border-color:#c9d2ff;background:#fafbff}
+  input[type="radio"],input[type="checkbox"]{margin-top:2px;accent-color:var(--accent)}
+  input[type="text"],input[type="url"],input[type="number"],textarea,select{
+    width:100%;
+    border:1px solid #d7dce5;
+    border-radius:12px;
+    padding:12px 13px;
+    font:inherit;
+    color:var(--text);
+    background:#fff;
+    outline:none;
+  }
+  input:focus,textarea:focus,select:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(55,93,251,.10);
+  }
+  textarea{min-height:100px;resize:vertical}
+  .other{margin-top:10px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+  .sticky{
+    position:sticky;
+    bottom:14px;
+    z-index:10;
+    margin-top:22px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(12px);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:12px;
+    box-shadow:var(--shadow);
+  }
+  .btn{
+    border:0;
+    border-radius:11px;
+    padding:11px 15px;
+    font-weight:720;
+    cursor:pointer;
+  }
+  .btn.primary{background:var(--accent);color:white}
+  .btn.secondary{background:#f1f3f8;color:#27324a}
+  .btn.success{background:#e9f7ef;color:var(--success)}
+  .btn.danger{background:#fff0ef;color:var(--danger)}
+  .status{margin-left:auto;align-self:center;font-size:13px;color:var(--muted)}
+  .privacy{font-size:12px;color:var(--muted);margin-top:14px;line-height:1.5}
+
+  @media (max-width:640px){
+    .wrap{padding:20px 12px 72px}
+    .hero{padding:22px}
+    .section-toggle,.section-body{padding-left:16px;padding-right:16px}
+    .two{grid-template-columns:1fr}
+    .options{grid-template-columns:1fr}
+    .status{width:100%;margin-left:0}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>Mwiningbong CV Information Form</h1>
+    <p>
+      This short form collects the details needed to strengthen your CV for SOC, cybersecurity,
+      information security, and related technical roles. Choose what applies and add short notes where useful.
+    </p>
+    <div class="save-note">✓ Answers save automatically in this browser</div>
+    <div class="progress-row">
+      <div class="progress-shell"><div class="progress-bar" id="progressBar"></div></div>
+      <div class="progress-label" id="progressLabel">0% complete</div>
+    </div>
+  </div>
+
+  <form id="cvForm">
+
+    <section class="section open">
+      <button class="section-toggle" type="button">
+        <div>
+          <div class="section-title">1. Career direction</div>
+          <div class="section-sub">Help us target the right roles.</div>
+        </div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="section-body">
+        <div class="q required-q">
+          <div class="q-title">Which roles are you interested in?</div>
+          <div class="hint">Choose all that apply.</div>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="target_roles" value="SOC Analyst">SOC Analyst</label>
+            <label class="option"><input type="checkbox" name="target_roles" value="Cybersecurity Analyst">Cybersecurity Analyst</label>
+            <label class="option"><input type="checkbox" name="target_roles" value="Information Security Analyst">Information Security Analyst</label>
+            <label class="option"><input type="checkbox" name="target_roles" value="IT Security Analyst">IT Security Analyst</label>
+            <label class="option"><input type="checkbox" name="target_roles" value="Network Security">Network Security</label>
+            <label class="option"><input type="checkbox" name="target_roles" value="IT Support">IT Support</label>
+            <label class="option"><input type="checkbox" name="target_roles" value="Software Development">Software Development</label>
+            <label class="option"><input type="checkbox" name="target_roles" value="GRC">Governance, Risk and Compliance</label>
+          </div>
+          <input class="other" type="text" name="target_roles_other" placeholder="Other role(s)" />
+        </div>
+
+        <div class="q">
+          <div class="q-title">Where are you open to working?</div>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="work_location" value="Ghana">Ghana</label>
+            <label class="option"><input type="checkbox" name="work_location" value="Remote">Remote</label>
+            <label class="option"><input type="checkbox" name="work_location" value="International">International</label>
+            <label class="option"><input type="checkbox" name="work_location" value="Relocation">Open to relocation</label>
+          </div>
+          <input class="other" type="text" name="work_location_other" placeholder="Other location preference" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <button class="section-toggle" type="button">
+        <div>
+          <div class="section-title">2. National Investment Bank SOC work</div>
+          <div class="section-sub">The highest-value section for the CV.</div>
+        </div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="section-body">
+
+        <div class="q required-q">
+          <div class="q-title">Which security tools or systems did you use?</div>
+          <div class="hint">Only choose tools you actually used or worked with.</div>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="soc_tools" value="Microsoft Sentinel">Microsoft Sentinel</label>
+            <label class="option"><input type="checkbox" name="soc_tools" value="Microsoft Defender">Microsoft Defender</label>
+            <label class="option"><input type="checkbox" name="soc_tools" value="Splunk">Splunk</label>
+            <label class="option"><input type="checkbox" name="soc_tools" value="IBM QRadar">IBM QRadar</label>
+            <label class="option"><input type="checkbox" name="soc_tools" value="Active Directory">Active Directory</label>
+            <label class="option"><input type="checkbox" name="soc_tools" value="Microsoft Entra ID">Microsoft Entra ID</label>
+            <label class="option"><input type="checkbox" name="soc_tools" value="Fortinet">Fortinet</label>
+            <label class="option"><input type="checkbox" name="soc_tools" value="Wireshark">Wireshark</label>
+            <label class="option"><input type="checkbox" name="soc_tools" value="ServiceNow">ServiceNow</label>
+            <label class="option"><input type="checkbox" name="soc_tools" value="Jira">Jira</label>
+            <label class="option"><input type="checkbox" name="soc_tools" value="EDR/XDR">EDR / XDR platform</label>
+            <label class="option"><input type="checkbox" name="soc_tools" value="Vulnerability scanner">Vulnerability scanner</label>
+          </div>
+          <input class="other" type="text" name="soc_tools_other" placeholder="Other tools or product names" />
+        </div>
+
+        <div class="q required-q">
+          <div class="q-title">What types of alerts or incidents did you work with?</div>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="incident_types" value="Phishing">Phishing</label>
+            <label class="option"><input type="checkbox" name="incident_types" value="Malware">Malware</label>
+            <label class="option"><input type="checkbox" name="incident_types" value="Suspicious logins">Suspicious logins</label>
+            <label class="option"><input type="checkbox" name="incident_types" value="Failed logins">Failed logins</label>
+            <label class="option"><input type="checkbox" name="incident_types" value="Endpoint alerts">Endpoint alerts</label>
+            <label class="option"><input type="checkbox" name="incident_types" value="Firewall alerts">Firewall alerts</label>
+            <label class="option"><input type="checkbox" name="incident_types" value="Suspicious IPs/domains">Suspicious IPs or domains</label>
+            <label class="option"><input type="checkbox" name="incident_types" value="Unauthorized access">Unauthorized access</label>
+            <label class="option"><input type="checkbox" name="incident_types" value="Email security alerts">Email security alerts</label>
+          </div>
+          <input class="other" type="text" name="incident_types_other" placeholder="Other incident types" />
+        </div>
+
+        <div class="q required-q">
+          <div class="q-title">When an alert came in, what did you normally do?</div>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="alert_steps" value="Review alert">Review the alert</label>
+            <label class="option"><input type="checkbox" name="alert_steps" value="Review logs">Review logs</label>
+            <label class="option"><input type="checkbox" name="alert_steps" value="Check IP/domain">Check IPs or domains</label>
+            <label class="option"><input type="checkbox" name="alert_steps" value="Check user activity">Check user activity</label>
+            <label class="option"><input type="checkbox" name="alert_steps" value="Check endpoint activity">Check endpoint activity</label>
+            <label class="option"><input type="checkbox" name="alert_steps" value="Determine severity">Determine severity</label>
+            <label class="option"><input type="checkbox" name="alert_steps" value="Escalate">Escalate to senior analysts</label>
+            <label class="option"><input type="checkbox" name="alert_steps" value="Document incident">Document the incident</label>
+          </div>
+          <textarea class="other" name="alert_steps_other" placeholder="Anything else you normally did when handling an alert?"></textarea>
+        </div>
+
+        <div class="q">
+          <div class="q-title">What did you help set up in the new Information Security Department?</div>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="department_setup" value="SOPs">SOPs / procedures</label>
+            <label class="option"><input type="checkbox" name="department_setup" value="Documentation">Documentation</label>
+            <label class="option"><input type="checkbox" name="department_setup" value="Shift handover">Shift handover process</label>
+            <label class="option"><input type="checkbox" name="department_setup" value="Incident response">Incident response process</label>
+            <label class="option"><input type="checkbox" name="department_setup" value="Escalation">Escalation process</label>
+            <label class="option"><input type="checkbox" name="department_setup" value="Reporting templates">Reporting templates</label>
+            <label class="option"><input type="checkbox" name="department_setup" value="Monitoring process">Monitoring process</label>
+          </div>
+          <textarea class="other" name="department_setup_other" placeholder="Briefly describe what you personally helped create or improve."></textarea>
+        </div>
+
+        <div class="q">
+          <div class="q-title">Can you estimate any scale or volume?</div>
+          <div class="two">
+            <input type="text" name="alerts_per_shift" placeholder="Alerts reviewed per shift, if known" />
+            <input type="text" name="security_team_size" placeholder="Approx. security team size" />
+            <input type="text" name="incidents_volume" placeholder="Incidents handled or assisted with" />
+            <input type="text" name="people_represented" placeholder="National service personnel represented" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <button class="section-toggle" type="button">
+        <div>
+          <div class="section-title">3. Technical skills</div>
+          <div class="section-sub">Choose what you can genuinely discuss in an interview.</div>
+        </div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="section-body">
+
+        <div class="q required-q">
+          <div class="q-title">Which technical areas have you used or studied?</div>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="technical_areas" value="Networking">Networking</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="TCP/IP">TCP/IP</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="DNS">DNS</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="VPNs">VPNs</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="Firewalls">Firewalls</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="Linux">Linux</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="Windows">Windows administration</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="Active Directory">Active Directory</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="SIEM">SIEM</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="Incident response">Incident response</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="Threat intelligence">Threat intelligence</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="Vulnerability management">Vulnerability management</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="Phishing analysis">Phishing analysis</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="Risk assessment">Risk assessment</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="ISO 27001">ISO 27001</label>
+            <label class="option"><input type="checkbox" name="technical_areas" value="Business continuity">Business continuity</label>
+          </div>
+          <input class="other" type="text" name="technical_areas_other" placeholder="Other technical areas" />
+        </div>
+
+        <div class="q">
+          <div class="q-title">Programming languages and development tools</div>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="programming" value="Python">Python</label>
+            <label class="option"><input type="checkbox" name="programming" value="JavaScript">JavaScript</label>
+            <label class="option"><input type="checkbox" name="programming" value="TypeScript">TypeScript</label>
+            <label class="option"><input type="checkbox" name="programming" value="PHP">PHP</label>
+            <label class="option"><input type="checkbox" name="programming" value="Java">Java</label>
+            <label class="option"><input type="checkbox" name="programming" value="C/C++">C / C++</label>
+            <label class="option"><input type="checkbox" name="programming" value="SQL">SQL</label>
+            <label class="option"><input type="checkbox" name="programming" value="HTML/CSS">HTML / CSS</label>
+            <label class="option"><input type="checkbox" name="programming" value="Bash">Bash</label>
+            <label class="option"><input type="checkbox" name="programming" value="Git/GitHub">Git / GitHub</label>
+          </div>
+          <input class="other" type="text" name="programming_other" placeholder="Other languages, frameworks, databases, or tools" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <button class="section-toggle" type="button">
+        <div>
+          <div class="section-title">4. AI and coding projects</div>
+          <div class="section-sub">This will help show modern hands-on technical experience.</div>
+        </div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="section-body">
+        <div class="q required-q">
+          <div class="q-title">Which AI coding tools have you actually used?</div>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="ai_tools" value="OpenCode">OpenCode</label>
+            <label class="option"><input type="checkbox" name="ai_tools" value="ChatGPT">ChatGPT</label>
+            <label class="option"><input type="checkbox" name="ai_tools" value="Claude">Claude</label>
+            <label class="option"><input type="checkbox" name="ai_tools" value="Codex">Codex</label>
+            <label class="option"><input type="checkbox" name="ai_tools" value="Cursor">Cursor</label>
+            <label class="option"><input type="checkbox" name="ai_tools" value="GitHub Copilot">GitHub Copilot</label>
+            <label class="option"><input type="checkbox" name="ai_tools" value="Gemini">Gemini</label>
+          </div>
+          <input class="other" type="text" name="ai_tools_other" placeholder="Other AI coding tools" />
+        </div>
+
+        <div class="q">
+          <div class="q-title">What have you used AI coding tools to do?</div>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="ai_tasks" value="Build features">Build features</label>
+            <label class="option"><input type="checkbox" name="ai_tasks" value="Debug">Debug problems</label>
+            <label class="option"><input type="checkbox" name="ai_tasks" value="Read codebase">Understand existing code</label>
+            <label class="option"><input type="checkbox" name="ai_tasks" value="Refactor">Refactor code</label>
+            <label class="option"><input type="checkbox" name="ai_tasks" value="Write tests">Write or improve tests</label>
+            <label class="option"><input type="checkbox" name="ai_tasks" value="Frontend">Frontend work</label>
+            <label class="option"><input type="checkbox" name="ai_tasks" value="Backend">Backend work</label>
+            <label class="option"><input type="checkbox" name="ai_tasks" value="Database">Database changes</label>
+            <label class="option"><input type="checkbox" name="ai_tasks" value="Research">Technical research</label>
+          </div>
+          <input class="other" type="text" name="ai_tasks_other" placeholder="Other tasks" />
+        </div>
+
+        <div class="q required-q">
+          <div class="q-title">Describe up to 3 real projects you helped with.</div>
+          <div class="hint">A few sentences each is enough. Mention what the app did, what you personally worked on, tools/languages used, and whether you tested or debugged it.</div>
+          <textarea name="projects" placeholder="Project 1: ...&#10;&#10;Project 2: ...&#10;&#10;Project 3: ..."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <button class="section-toggle" type="button">
+        <div>
+          <div class="section-title">5. Ministry of Education</div>
+          <div class="section-sub">A few details to make the IT internship stronger.</div>
+        </div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="section-body">
+        <div class="q">
+          <div class="q-title">What did you troubleshoot or support?</div>
+          <div class="options">
+            <label class="option"><input type="checkbox" name="moe_support" value="Hardware">Hardware</label>
+            <label class="option"><input type="checkbox" name="moe_support" value="Software">Software</label>
+            <label class="option"><input type="checkbox" name="moe_support" value="Network">Network issues</label>
+            <label class="option"><input type="checkbox" name="moe_support" value="Printers">Printers</label>
+            <label class="option"><input type="checkbox" name="moe_support" value="Wi-Fi">Wi-Fi</label>
+            <label class="option"><input type="checkbox" name="moe_support" value="Accounts">User accounts</label>
+            <label class="option"><input type="checkbox" name="moe_support" value="Software installs">Software installation</label>
+            <label class="option"><input type="checkbox" name="moe_support" value="Website launch">Government website launch</label>
+          </div>
+          <input class="other" type="text" name="moe_support_other" placeholder="Other responsibilities" />
+        </div>
+
+        <div class="q">
+          <div class="q-title">Anything useful to quantify?</div>
+          <div class="two">
+            <input type="text" name="moe_users" placeholder="Approx. users supported" />
+            <input type="text" name="moe_impact" placeholder="Any result or improvement you helped achieve" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <button class="section-toggle" type="button">
+        <div>
+          <div class="section-title">6. Education, certifications and profiles</div>
+          <div class="section-sub">Final details and links.</div>
+        </div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="section-body">
+        <div class="q">
+          <div class="q-title">University details</div>
+          <div class="two">
+            <input type="text" name="degree" value="BSc Computer Science" placeholder="Degree" />
+            <input type="text" name="graduation_year" placeholder="Graduation year" />
+          </div>
+          <textarea class="other" name="final_project" placeholder="Final-year project, if applicable: title, what it did, technologies used, and your contribution"></textarea>
+        </div>
+
+        <div class="q">
+          <div class="q-title">Cyber Security Authority licence</div>
+          <div class="hint">Use the exact official wording if you know it.</div>
+          <div class="two">
+            <input type="text" name="csa_title" placeholder="Exact licence / certification title" />
+            <input type="text" name="csa_number" placeholder="Licence number, if applicable" />
+          </div>
+          <input class="other" type="url" name="csa_url" placeholder="Public verification link, if available" />
+        </div>
+
+        <div class="q">
+          <div class="q-title">Professional links</div>
+          <div class="two">
+            <input type="url" name="linkedin" placeholder="LinkedIn URL" />
+            <input type="url" name="github" placeholder="GitHub URL" />
+            <input type="url" name="tryhackme" placeholder="TryHackMe profile" />
+            <input type="url" name="hackthebox" placeholder="Hack The Box profile" />
+          </div>
+        </div>
+
+        <div class="q required-q">
+          <div class="q-title">What is the strongest technical thing you have done that is missing from your current CV?</div>
+          <textarea name="strongest_missing" placeholder="Tell us in your own words. Short and informal is fine."></textarea>
+        </div>
+      </div>
+    </section>
+
+  </form>
+
+  <div class="sticky">
+    <button class="btn primary" type="button" id="exportTxt">Export Answers</button>
+    <button class="btn secondary" type="button" id="exportJson">Backup JSON</button>
+    <button class="btn success" type="button" id="saveNow">Save Now</button>
+    <button class="btn danger" type="button" id="clearSaved">Clear Saved</button>
+    <div class="status" id="saveStatus">Saved locally</div>
+  </div>
+
+  <div class="privacy">
+    Your answers stay in this browser unless you export and share them. Browser storage can be cleared by your browser settings or by using the Clear Saved button.
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = "mwiningbong_cv_form_v1";
+const form = document.getElementById("cvForm");
+const saveStatus = document.getElementById("saveStatus");
+let saveTimer = null;
+
+document.querySelectorAll(".section-toggle").forEach(btn => {
+  btn.addEventListener("click", () => {
+    btn.closest(".section").classList.toggle("open");
+  });
+});
+
+function serializeForm() {
+  const data = {};
+  const elements = [...form.elements].filter(el => el.name);
+
+  for (const el of elements) {
+    if (el.type === "checkbox") {
+      if (!data[el.name]) data[el.name] = [];
+      if (el.checked) data[el.name].push(el.value);
+    } else if (el.type === "radio") {
+      if (el.checked) data[el.name] = el.value;
+      else if (!(el.name in data)) data[el.name] = "";
+    } else {
+      data[el.name] = el.value.trim();
+    }
+  }
+  return data;
+}
+
+function restoreForm(data) {
+  if (!data) return;
+  const elements = [...form.elements].filter(el => el.name);
+
+  for (const el of elements) {
+    if (!(el.name in data)) continue;
+    const value = data[el.name];
+
+    if (el.type === "checkbox") {
+      el.checked = Array.isArray(value) && value.includes(el.value);
+    } else if (el.type === "radio") {
+      el.checked = value === el.value;
+    } else {
+      el.value = value ?? "";
+    }
+  }
+}
+
+function saveLocal(showMessage = false) {
+  const data = serializeForm();
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  saveStatus.textContent = showMessage ? "Saved now" : "Saved locally";
+  if (showMessage) {
+    setTimeout(() => saveStatus.textContent = "Saved locally", 1400);
+  }
+}
+
+function scheduleSave() {
+  saveStatus.textContent = "Saving...";
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => saveLocal(false), 350);
+  updateProgress();
+}
+
+function updateProgress() {
+  const groups = [...document.querySelectorAll(".required-q")];
+  let done = 0;
+
+  groups.forEach(group => {
+    const controls = [...group.querySelectorAll("input, textarea, select")];
+    const hasChecked = controls.some(el =>
+      (el.type === "checkbox" || el.type === "radio") && el.checked
+    );
+    const hasText = controls.some(el =>
+      !["checkbox","radio"].includes(el.type) && el.value.trim().length > 0
+    );
+    if (hasChecked || hasText) done++;
+  });
+
+  const pct = groups.length ? Math.round((done / groups.length) * 100) : 0;
+  document.getElementById("progressBar").style.width = pct + "%";
+  document.getElementById("progressLabel").textContent = pct + "% complete";
+}
+
+function safeFilename(name) {
+  return name.replace(/[^a-z0-9_\-]+/gi, "_");
+}
+
+function downloadFile(content, filename, type) {
+  const blob = new Blob([content], {type});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+const labels = {
+  target_roles: "Target roles",
+  target_roles_other: "Other target roles",
+  work_location: "Work location preferences",
+  work_location_other: "Other location preference",
+  soc_tools: "SOC tools and systems",
+  soc_tools_other: "Other SOC tools",
+  incident_types: "Alert and incident types",
+  incident_types_other: "Other incident types",
+  alert_steps: "Normal alert handling steps",
+  alert_steps_other: "Other alert handling details",
+  department_setup: "Information Security Department setup contributions",
+  department_setup_other: "Department setup details",
+  alerts_per_shift: "Approx. alerts reviewed per shift",
+  security_team_size: "Approx. security team size",
+  incidents_volume: "Approx. incidents handled or assisted with",
+  people_represented: "National service personnel represented",
+  technical_areas: "Technical areas",
+  technical_areas_other: "Other technical areas",
+  programming: "Programming and development tools",
+  programming_other: "Other development tools",
+  ai_tools: "AI coding tools",
+  ai_tools_other: "Other AI coding tools",
+  ai_tasks: "AI-assisted development tasks",
+  ai_tasks_other: "Other AI-assisted tasks",
+  projects: "Software and AI coding projects",
+  moe_support: "Ministry of Education support areas",
+  moe_support_other: "Other Ministry responsibilities",
+  moe_users: "Approx. Ministry users supported",
+  moe_impact: "Ministry result or improvement",
+  degree: "Degree",
+  graduation_year: "Graduation year",
+  final_project: "Final-year project",
+  csa_title: "Cyber Security Authority licence title",
+  csa_number: "Cyber Security Authority licence number",
+  csa_url: "Cyber Security Authority verification URL",
+  linkedin: "LinkedIn",
+  github: "GitHub",
+  tryhackme: "TryHackMe",
+  hackthebox: "Hack The Box",
+  strongest_missing: "Strongest technical experience missing from current CV"
+};
+
+function exportText() {
+  saveLocal(false);
+  const data = serializeForm();
+  let out = "MWININGBONG BAEKA - CV INFORMATION\n";
+  out += "===================================\n\n";
+
+  for (const [key, value] of Object.entries(data)) {
+    const emptyArray = Array.isArray(value) && value.length === 0;
+    const emptyString = typeof value === "string" && value.trim() === "";
+    if (emptyArray || emptyString) continue;
+
+    const title = labels[key] || key;
+    out += title + ":\n";
+    if (Array.isArray(value)) {
+      out += value.map(v => "- " + v).join("\n") + "\n\n";
+    } else {
+      out += value + "\n\n";
+    }
+  }
+
+  downloadFile(out, safeFilename("Mwiningbong_CV_Answers") + ".txt", "text/plain;charset=utf-8");
+}
+
+function exportJson() {
+  saveLocal(false);
+  const data = serializeForm();
+  const payload = {
+    exportedAt: new Date().toISOString(),
+    form: "Mwiningbong CV Information Form",
+    answers: data
+  };
+  downloadFile(
+    JSON.stringify(payload, null, 2),
+    safeFilename("Mwiningbong_CV_Answers_Backup") + ".json",
+    "application/json"
+  );
+}
+
+form.addEventListener("input", scheduleSave);
+form.addEventListener("change", scheduleSave);
+
+document.getElementById("saveNow").addEventListener("click", () => saveLocal(true));
+document.getElementById("exportTxt").addEventListener("click", exportText);
+document.getElementById("exportJson").addEventListener("click", exportJson);
+
+document.getElementById("clearSaved").addEventListener("click", () => {
+  if (!confirm("Clear all saved answers from this browser?")) return;
+  localStorage.removeItem(STORAGE_KEY);
+  form.reset();
+  updateProgress();
+  saveStatus.textContent = "Saved answers cleared";
+  setTimeout(() => saveStatus.textContent = "Not saved yet", 1400);
+});
+
+try {
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+  restoreForm(saved);
+} catch (e) {}
+
+updateProgress();
+</script>
+</body>
+</html>
